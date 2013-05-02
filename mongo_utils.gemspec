@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mongo_utils/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = 'mongo_utils'
+  gem.name          = 'ruby_mongo_utils'
   gem.version       = MongoUtils::VERSION
   gem.authors       = ['Nikita Cernovs']
   gem.email         = ['n.cernovs@77agency.com']

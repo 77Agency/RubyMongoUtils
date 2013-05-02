@@ -18,7 +18,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Stripable
+
+Include MongoUtils::Stripable in your classes in order to prevent stroring nil, [], {}, 0, false in the Mongo!
+
+    class Page
+      include MongoUtils::Stripable
+     end
+
+## MongoDump and MongoRestore
+
+Provide MongoDump with collection name, query and a path in order to backup entries:
+
+    MongoUtils::MongoDump.call(
+      collection: Page.collection_name,
+      query:      "{ 'page_type': { '\\$ne': 'Wordpress' } }",
+      path:       "#{Rails.root}/mongodumps"
+    )
+
+Provide MongoRestore with collection name, filter and a path in order to restore matching entries:
+
+    MongoUtils::MongoRestore.call(
+      collection: Page.collection_name,
+      filter:     "{ 'page_type': 'Facebook' }",
+      path:       path
+    )
 
 ## Contributing
 

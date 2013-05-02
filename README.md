@@ -2,6 +2,8 @@
 
 Ruby Mongo Utilities
 
+[![Build Status](https://travis-ci.org/77Agency/RubyMongoUtils.png)](https://travis-ci.org/77Agency/RubyMongoUtils)
+
 ## Installation
 
 Add this line to your application's Gemfile:

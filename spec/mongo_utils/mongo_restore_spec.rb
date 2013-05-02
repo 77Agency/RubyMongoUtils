@@ -37,5 +37,7 @@ describe MongoUtils::MongoRestore do
     )
 
     Page.count.should eq 20
+
+    FileUtils.rm_rf(path)   
   end
 end

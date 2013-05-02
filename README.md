@@ -28,7 +28,7 @@ Include MongoUtils::Stripable in your classes in order to prevent stroring nil, 
       include MongoUtils::Stripable
      end
 
-## MongoDump and MongoRestore
+### MongoDump and MongoRestore
 
 Provide MongoDump with collection name, query and a path in order to backup entries:
 

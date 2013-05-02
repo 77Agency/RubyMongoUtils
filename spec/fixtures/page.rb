@@ -7,6 +7,4 @@ class Page
   field :likes, type: Hash,  default: { lifetime: { total: 0 } }
 
   embeds_many :posts
-
-
 end

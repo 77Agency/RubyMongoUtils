@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['n.cernovs@77agency.com']
   gem.description   = %q{Ruby Mongo Utilities}
   gem.summary       = %q{Ruby Mongo Utilities}
-  gem.homepage      = 'https://github.com/77Agency/RubyMongoUtils'
+  gem.homepage      = ''
 
   gem.add_dependency 'mongoid'
 

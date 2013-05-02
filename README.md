@@ -41,7 +41,7 @@ Provide MongoRestore with collection name, filter and a path in order to restore
     MongoUtils::MongoRestore.call(
       collection: Page.collection_name,
       filter:     "{ 'page_type': 'Facebook' }",
-      path:       path
+      path:       "#{Rails.root}/mongodumps"
     )
 
 ## Contributing

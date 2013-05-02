@@ -1,4 +1,4 @@
-require 'mongo_utils'
+require 'ruby_mongo_utils'
 
 Mongoid::Config.send :load_configuration, { sessions: { default: { hosts: ['localhost:27017'] , database: 'mongo_utils_tests' } } }
 

@@ -1,5 +1,0 @@
-require 'mongoid'
-require 'mongo_utils/version'
-require 'mongo_utils/stripable'
-require 'mongo_utils/mongo_dump'
-require 'mongo_utils/mongo_restore'

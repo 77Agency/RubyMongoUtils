@@ -6,7 +6,7 @@ Ruby Mongo Utilities
 
 Add this line to your application's Gemfile:
 
-    gem 'mongo_utils'
+    gem 'ruby_mongo_utils'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mongo_utils
+    $ gem install ruby_mongo_utils
 
 ## Usage
 

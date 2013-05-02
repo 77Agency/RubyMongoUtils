@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongo_utils (0.0.1)
+    ruby_mongo_utils (0.0.1)
       mongoid
 
 GEM
@@ -40,5 +40,5 @@ PLATFORMS
 
 DEPENDENCIES
   database_cleaner
-  mongo_utils!
   rspec
+  ruby_mongo_utils!

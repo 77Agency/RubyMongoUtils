@@ -223,28 +223,6 @@ describe MongoUtils::Stripable do
         page.keys.should include 'likes'
       end
 
-      it 'should update an empty value to another and stript empties in higher level hashes' do
-        page = Page.first
-        page.likes[:lifetime] = { user777: 77, user555: 0 }
-        page.save!
-
-        page.likes.should eq({ lifetime: { user777: 77 } })
-
-        page = Page.collection.find.first
-        page.keys.should include 'likes'
-      end
-
-      it 'should update an empty value to another and stript empties in higher level hashes' do
-        page = Page.first
-        page.likes[:lifetime] = { user777: 77, user555: 0, total: { by_user: [] } }
-        page.save!
-
-        page.likes.should eq({ lifetime: { user777: 77 } })
-
-        page = Page.collection.find.first
-        page.keys.should include 'likes'
-      end
-
       context 'after update' do
         before do
           page = Page.first
@@ -259,7 +237,7 @@ describe MongoUtils::Stripable do
 
           page = Page.first
           page.likes['totals'].should eq 55
-          page.likes['lifetime'].should eq({ 'user777' => 77 })
+          page.likes['lifetime'].should eq({ 'user777' => 77 , 'user555' => 0, 'total' => { 'by_user' => [] } })
         end
 
         it 'should be able to add another key to the second level hash' do
@@ -272,13 +250,13 @@ describe MongoUtils::Stripable do
           page.likes['lifetime']['user777'].should eq 77
         end
 
-        it 'should be able to make existing key inside a hash to empty value' do
+        it 'should be able to make existing key inside a hash to an empty value' do
           page = Page.first
           page.likes['lifetime']['user777'] = 0
           page.save!
 
           page = Page.first
-          page.likes['lifetime'].should be_blank
+          page.likes['lifetime']['user777'].should eq 0
         end
 
         it 'should be able to make existing key inside a hash to empty value and set another value' do
@@ -288,7 +266,7 @@ describe MongoUtils::Stripable do
           page.save!
 
           page = Page.first
-          page.likes['lifetime'].should eq({ 'user555' => 55 })
+          page.likes['lifetime'].should eq({ 'user777' => 0, 'user555' => 55, 'total' => { 'by_user' => [] } })
         end
       end
     end

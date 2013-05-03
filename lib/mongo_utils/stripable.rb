@@ -8,11 +8,15 @@ module MongoUtils
     end
 
     def plain_value_blank?(value)
+      if value.is_a?(Hash)
+        value = value.dup
+        value.reject! { |_, v| plain_value_blank?(v) }
+      end
       value.blank? || value == 0
     end
 
     def blank_and_was_blank_value?(attribute, value)
-      blank_value?(value) && respond_to?("#{attribute}_was") && blank_value?(send("#{attribute}_was"))
+      plain_value_blank?(value) && respond_to?("#{attribute}_was") && blank_value?(send("#{attribute}_was"))
     end
 
     def self.included(base)

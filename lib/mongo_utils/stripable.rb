@@ -16,7 +16,7 @@ module MongoUtils
     end
 
     def blank_and_was_blank_value?(attribute, value)
-      plain_value_blank?(value) && respond_to?("#{attribute}_was") && blank_value?(send("#{attribute}_was"))
+      plain_value_blank?(value) && respond_to?("#{attribute}_was") && blank_value?(send("#{attribute}_was")) && send("#{attribute}_changed?")
     end
 
     def self.included(base)

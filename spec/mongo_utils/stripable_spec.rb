@@ -179,6 +179,33 @@ describe MongoUtils::Stripable do
         page.keys.should_not include 'likes'
       end
 
+      it 'should not set nil values after multiple updates' do
+        page = Page.first
+        page.admins = [1,2,3]
+        page.save!
+
+        page.reload
+
+        page.admins.should eq([1,2,3])
+
+        page.admins = []
+
+        page.save!
+
+        page.reload
+
+        page.reload.admins.should eq([])
+
+        page.name = 'Page name 3'
+
+        page.save!
+
+        page.reload.admins.should eq([])
+
+        page = Page.collection.find.first
+        page.keys.should include 'admins'
+      end
+
       it 'should allow to set a value to a blank' do
         page = Page.first
         page.tags = []
@@ -192,7 +219,7 @@ describe MongoUtils::Stripable do
 
       it 'should not set empty value to another empty value' do
         page = Page.first
-        page.likes = { three_months: { total: 0} }
+        page.likes = { three_months: { total: 0 } }
         page.save!
 
         page.likes.should eq({ lifetime: { total: 0 } })
